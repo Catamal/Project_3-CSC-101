@@ -1,4 +1,4 @@
-﻿# Project 3 Richter Scale: calculate eearthquake energy based on magnitude and display the results in a table format
+﻿# Project 3 Richter Scale: calculate earthquake energy based on magnitude and display the results in a table format
 # alongside real world examples.
 # 10/2/2026
 # Kingsley Wickstrom
