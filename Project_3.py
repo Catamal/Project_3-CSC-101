@@ -1,37 +1,15 @@
-﻿# Project 3: Richter Scale; calculate eearthquake energy based on magnitude and display the results in a table format
+﻿# Project 3 Richter Scale: calculate eearthquake energy based on magnitude and display the results in a table format
 # alongside real world examples.
 # 10/2/2026
 # Kingsley Wickstrom
 
 
-def earthquakecat(magnitude):
-# What category of earthquake is it based on the magnitude
-    if magnitude < 2.0:
-        return "Micro"
-    elif magnitude < 3.0:
-        return "Minor"
-    elif magnitude < 4.0:
-        return "Light"
-    elif magnitude < 5.0:
-        return "Moderate"
-    elif magnitude < 6.0:
-        return "Strong"
-    elif magnitude < 7.0:
-        return "Major"
-    elif magnitude < 8.0:
-        return "Great"
-    else:
-        return "Extreme"
-
-
-def energyrel(magnitude):
-#Calculate approximate energy released in joules from the Richter magnitude
-    return 10 ** (4.4 + 1.5 * magnitude)
+def energy_rel(magnitude):
+# calculate approximate energy released in joules from the Richter magnitude.
+    return 10 ** (4.8 + 1.5 * magnitude)
 
 
 def main():
-    print("Richter Scale Earthquake Calculator")
-
     try:
         magnitude = float(input("Enter the earthquake magnitude: "))
     except ValueError: # integer error handling for invalid input
@@ -42,11 +20,16 @@ def main():
         print("Magnitude cannot be negative.")
         return
 
-    energy = energyrel(magnitude)
-    category = earthquakecat(magnitude)
+    energy = energy_rel(magnitude)
+    tnt = energy / 4_184_000_000  # 1 metric ton of TNT = 4.184e9 joules
+    krakatoa = tnt / 10_000_000
+    hiroshima = tnt / 100_000
 
-    print(f"\nEarthquake magnitude: {magnitude}")
-    print(f"Earthquake category: {category}")
-    print(f"Approximate energy released: {energy:,.2f} joules")
+    print(f"The earthquake's magnitude on the Richter scale: {magnitude}")
+    print(f"A {magnitude:.4f} magnitude earthquake releases {energy:,.4f} joules of") # :.nf is the number of decimal places to display
+    print("energy.")
+    print(f"This is equivalent to {tnt:.4f} metric tons of exploded TNT.")
+    print(f"This is equivalent to {krakatoa:.4f} Krakatoa eruptions and {hiroshima:.4f}")
+    print("Hiroshima bombs")
 
 main()
